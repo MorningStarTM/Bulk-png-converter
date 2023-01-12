@@ -15,11 +15,21 @@ root.title("PNG Converter")
 root.iconbitmap("E:\\ML_test\\app\\pics\\converter.ico")
 
 
+#intitalize the font for label
+my_font_1 = customtkinter.CTkFont(family="Arial", size=15)
+#intitalize the font for entry
+my_font_2 = customtkinter.CTkFont(family="Times New Roman", size=12)
+#initalize the font for button
+my_font_3 = customtkinter.CTkFont(family="Arial Rounded MT", size=26)
+
 #heading label
+select_path = customtkinter.CTkLabel(root, text="Select Path", font=my_font_1)
+select_path.place(relx=0.1, rely=0.2)
+
+save_path = customtkinter.CTkLabel(root, text="Save Path", font=my_font_1)
+save_path.place(relx=0.1, rely=0.4)
 
 
-#intitalize the font
-my_font = customtkinter.CTkFont(family="Times New Roman", size=12)
 #Entry for select path 
 select_entry = customtkinter.CTkEntry(root, width=400, font=my_font)
 select_entry.place(relx=0.3, rely=0.2)
@@ -39,6 +49,9 @@ select_button.place(relx=0.95, rely=0.243, anchor=CENTER)
 save_button = customtkinter.CTkButton(master=root, text="", image=select_image, width=10)
 save_button.place(relx=0.95, rely=0.44, anchor=CENTER)
 
+#convert Button
+convert_button = customtkinter.CTkButton(root, text="Convert", font=my_font_3, width=540, height=50)
+convert_button.place(relx=0.1, rely=0.6)
 
 
 root.mainloop()
