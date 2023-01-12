@@ -31,11 +31,11 @@ save_path.place(relx=0.1, rely=0.4)
 
 
 #Entry for select path 
-select_entry = customtkinter.CTkEntry(root, width=400, font=my_font)
+select_entry = customtkinter.CTkEntry(root, width=400, font=my_font_2)
 select_entry.place(relx=0.3, rely=0.2)
 
 #entry for save path
-save_entry = customtkinter.CTkEntry(root, width=400, font=my_font)
+save_entry = customtkinter.CTkEntry(root, width=400, font=my_font_2)
 save_entry.place(relx=0.3, rely=0.4)
 
 #button image
