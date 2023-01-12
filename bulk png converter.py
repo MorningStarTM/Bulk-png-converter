@@ -32,22 +32,22 @@ save_path.place(relx=0.1, rely=0.4)
 
 #Entry for select path 
 select_entry = customtkinter.CTkEntry(root, width=400, font=my_font_2)
-select_entry.place(relx=0.3, rely=0.2)
+select_entry.place(relx=0.25, rely=0.2)
 
 #entry for save path
 save_entry = customtkinter.CTkEntry(root, width=400, font=my_font_2)
-save_entry.place(relx=0.3, rely=0.4)
+save_entry.place(relx=0.25, rely=0.4)
 
 #button image
 select_image = customtkinter.CTkImage(Image.open("E:\\ML_test\\app\\pics\\folder.png"))
 
 #button for select path
 select_button = customtkinter.CTkButton(master=root, text="", image=select_image, width=10)
-select_button.place(relx=0.95, rely=0.243, anchor=CENTER)
+select_button.place(relx=0.90, rely=0.243, anchor=CENTER)
 
 #button for save path
 save_button = customtkinter.CTkButton(master=root, text="", image=select_image, width=10)
-save_button.place(relx=0.95, rely=0.44, anchor=CENTER)
+save_button.place(relx=0.90, rely=0.44, anchor=CENTER)
 
 #convert Button
 convert_button = customtkinter.CTkButton(root, text="Convert", font=my_font_3, width=540, height=50)
