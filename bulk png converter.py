@@ -25,23 +25,38 @@ def get_select_path_from_entry():
 def get_save_path_from_entry():
     path = save_entry.get()
     return path
-    
+
 #function for get path using button
-def browse_folder():
+def browse_select_folder():
     folder = filedialog.askdirectory()
     select_entry.insert(0,folder)
 
+#function to get path of save directory
+def browse_save_folder():
+    folder = filedialog.askdirectory()
+    save_entry.insert(0,folder)
+
+
 #function for convert the image
 def convert_image():
+    #get the path of select directory
     select_path = get_select_path_from_entry()
+    #Get the path of save directory
     save_path = get_save_path_from_entry()
+    #Show error message
     if select_path == "":
         messagebox.showerror("Empty", "Path is empty")
+    
     images = sorted(glob(os.path.join(select_path, "*.*")))
+    name = save_path.split("/")[-1]
     for i in range(len(images)):
+        #read image
         image = cv2.imread(images[i], cv2.IMREAD_COLOR)
+        #resize image
         image = cv2.resize(image, (200, 200))
-
+        #save image
+        cv2.imwrite(f"{save_path}/{name}_{i}.png", image)
+        
 
 
 #intitalize the font for label
@@ -72,11 +87,11 @@ save_entry.place(relx=0.25, rely=0.4)
 select_image = customtkinter.CTkImage(Image.open("E:\\ML_test\\app\\pics\\folder.png"))
 
 #button for select path
-select_button = customtkinter.CTkButton(master=root, text="", image=select_image, width=10, command=browse_folder)
+select_button = customtkinter.CTkButton(master=root, text="", image=select_image, width=10, command=browse_select_folder)
 select_button.place(relx=0.90, rely=0.243, anchor=CENTER)
 
 #button for save path
-save_button = customtkinter.CTkButton(master=root, text="", image=select_image, width=10)
+save_button = customtkinter.CTkButton(master=root, text="", image=select_image, width=10, command=browse_save_folder)
 save_button.place(relx=0.90, rely=0.44, anchor=CENTER)
 
 #convert Button
