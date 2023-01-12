@@ -17,10 +17,15 @@ root.title("PNG Converter")
 root.iconbitmap("E:\\ML_test\\app\\pics\\converter.ico")
 
 #function for get path
-def get_path_from_entry():
+def get_select_path_from_entry():
     path = select_entry.get()
     return path
 
+#function to get save directory
+def get_save_path_from_entry():
+    path = save_entry.get()
+    return path
+    
 #function for get path using button
 def browse_folder():
     folder = filedialog.askdirectory()
@@ -28,9 +33,15 @@ def browse_folder():
 
 #function for convert the image
 def convert_image():
-    path = get_path_from_entry()
-    if path == "":
+    select_path = get_select_path_from_entry()
+    save_path = get_save_path_from_entry()
+    if select_path == "":
         messagebox.showerror("Empty", "Path is empty")
+    images = sorted(glob(os.path.join(select_path, "*.*")))
+    for i in range(len(images)):
+        image = cv2.imread(images[i], cv2.IMREAD_COLOR)
+        image = cv2.resize(image, (200, 200))
+
 
 
 #intitalize the font for label
