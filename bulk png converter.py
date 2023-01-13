@@ -53,10 +53,13 @@ def convert_image():
     if select_path == "":
         messagebox.showerror("Empty", "Path is empty")
     
+    #get the file path of imgages
     images = sorted(glob(os.path.join(select_path, "*.*")))
+    #extract the name for image
     name = save_path.split("/")[-1]
     #show progress bar
-    #progress.place(relx=0.1, rely=8.5)
+    progress.place(relx=0.1, rely=0.85)
+
     for i in range(len(images)):
         #read image
         image = cv2.imread(images[i], cv2.IMREAD_COLOR)
@@ -70,7 +73,11 @@ def convert_image():
         root.update_idletasks()
         time.sleep(1)
 
-        if file_size == len(image)
+        #show message when process completed
+        if progress['value'] == 100:
+            messagebox.showinfo("Done", "Successfully converted")
+            #hide the progress bar
+            progress.place(relx=-0.9, rely=-0.9)
         
         
 
@@ -116,6 +123,6 @@ convert_button.place(relx=0.1, rely=0.6)
 
 #progress bar
 progress = ttk.Progressbar(root,orient=HORIZONTAL, mode="determinate", length=670)
-progress.place(relx=0.1, rely=0.85)
+progress.place(relx=-0.9, rely=0.85)
 
 root.mainloop()
