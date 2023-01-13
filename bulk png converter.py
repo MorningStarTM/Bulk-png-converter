@@ -69,12 +69,12 @@ def convert_image():
         cv2.imwrite(f"{save_path}/{name}_{i}.png", image)
         file_size += 1
         #increment value in progress bar
-        progress['value'] += int(100/len(images))
+        progress['value'] += int(100/(len(images)-1))
         root.update_idletasks()
         time.sleep(1)
 
         #show message when process completed
-        if progress['value'] == 100:
+        if progress['value'] > 100:
             messagebox.showinfo("Done", "Successfully converted")
             #hide the progress bar
             progress.place(relx=-0.9, rely=-0.9)
