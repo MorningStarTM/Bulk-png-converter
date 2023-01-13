@@ -1,11 +1,13 @@
 from tkinter import*
 import customtkinter
+from tkinter import ttk
 import cv2
 import os
 from glob import glob
 from PIL import ImageTk, Image
 from tkinter import messagebox
 from tkinter import filedialog
+import time
 
 customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("blue")
@@ -39,16 +41,22 @@ def browse_save_folder():
 
 #function for convert the image
 def convert_image():
+    #variable for check work done
+    file_size = 0
     #get the path of select directory
     select_path = get_select_path_from_entry()
     #Get the path of save directory
     save_path = get_save_path_from_entry()
     #Show error message
+    
+
     if select_path == "":
         messagebox.showerror("Empty", "Path is empty")
     
     images = sorted(glob(os.path.join(select_path, "*.*")))
     name = save_path.split("/")[-1]
+    #show progress bar
+    #progress.place(relx=0.1, rely=8.5)
     for i in range(len(images)):
         #read image
         image = cv2.imread(images[i], cv2.IMREAD_COLOR)
@@ -56,6 +64,14 @@ def convert_image():
         image = cv2.resize(image, (200, 200))
         #save image
         cv2.imwrite(f"{save_path}/{name}_{i}.png", image)
+        file_size += 1
+        #increment value in progress bar
+        progress['value'] += int(100/len(images))
+        root.update_idletasks()
+        time.sleep(1)
+
+        if file_size == len(image)
+        
         
 
 
@@ -98,5 +114,8 @@ save_button.place(relx=0.90, rely=0.44, anchor=CENTER)
 convert_button = customtkinter.CTkButton(root, text="Convert", font=my_font_3, width=540, height=50, command=convert_image)
 convert_button.place(relx=0.1, rely=0.6)
 
+#progress bar
+progress = ttk.Progressbar(root,orient=HORIZONTAL, mode="determinate", length=670)
+progress.place(relx=0.1, rely=0.85)
 
 root.mainloop()
