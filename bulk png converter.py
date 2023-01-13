@@ -30,11 +30,13 @@ def get_save_path_from_entry():
 
 #function for get path using button
 def browse_select_folder():
+    select_entry.delete(0, END)
     folder = filedialog.askdirectory()
     select_entry.insert(0,folder)
 
 #function to get path of save directory
 def browse_save_folder():
+    save_entry.delete(0, END)
     folder = filedialog.askdirectory()
     save_entry.insert(0,folder)
 
@@ -78,6 +80,8 @@ def convert_image():
             messagebox.showinfo("Done", "Successfully converted")
             #hide the progress bar
             progress.place(relx=-0.9, rely=-0.9)
+            select_entry.delete(0, END)
+            save_entry.delete(0, END)
         
         
 
